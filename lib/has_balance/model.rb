@@ -26,12 +26,12 @@ module HasBalance
 
       def give_money!(amount)
         sql = "update users set balance=#{self.balance + amount.to_f} where id='#{self.id}'"
-        connection.update(sql)
+        self.class.connection.update(sql)
       end
 
       def take_money!(amount)
         sql = "update users set balance=#{self.balance - amount.to_f} where id='#{self.id}'"
-        connection.update(sql)
+        self.class.connection.update(sql)
       end
 
       def check_balance_value
